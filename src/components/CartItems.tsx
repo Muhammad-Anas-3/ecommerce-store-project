@@ -56,7 +56,7 @@ export default function CartItems() {
                       {item.category}
                     </p>
                   </div>
-                  {item.price}
+                  ${item.price}
                 </div>
               </div>
             </li>
