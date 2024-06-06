@@ -1,5 +1,6 @@
 "use server";
 
+import { signIn } from "@/auth";
 import { db } from "@/lib/db";
 import { registerSchema } from "@/lib/zod";
 import bcryptjs from "bcryptjs";
@@ -23,7 +24,11 @@ export const registerUser = async (values: z.infer<typeof registerSchema>) => {
 
     const hashedPassword = await bcryptjs.hash(password, 10);
 
-    const newUser = await db.user.create({ data: { name, email, password: hashedPassword } });
+    await db.user.create({ data: { name, email, password: hashedPassword } });
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('password', password);
 
-    return newUser
+    await signIn('credentials', formData);
+
 };
