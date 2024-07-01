@@ -39,7 +39,7 @@ export default function CartItems() {
               </div>
               <div className="relative ml-4 flex flex-1 flex-col justify-between sm:ml-6">
                 <div className="absolute z-10 right-0 top-0">
-                  <X onClick={() => onRemove(item.id)} />
+                  <X onClick={() => onRemove(item.id)} className="hover:bg-gray-300 cursor-pointer hover:rounded-full"/>
                 </div>
                 <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
                   <div className="flex justify-between">
